@@ -1,5 +1,5 @@
 import express from "express";
-import dotenv from "dotenv";
+import "dotenv/config";
 import { connectDB } from "./lib/db.js";
 import { clerkMiddleware } from "@clerk/express";
 import cors from "cors";
@@ -8,8 +8,8 @@ import path from "path";
 import job from "./lib/cron.js";
 import clerkWebhook from "./webhooks/clerk.webhook.js";
 import authRoutes from "./routes/auth.route.js";
+import messageRoutes from "./routes/message.route.js";
 
-dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
@@ -43,6 +43,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
 
 if (fs.existsSync(publicDir)) {
   app.use(express.static(publicDir));
