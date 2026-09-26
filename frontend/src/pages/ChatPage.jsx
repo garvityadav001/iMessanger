@@ -1,8 +1,9 @@
 
-
 const ChatPage = () => {
   return (
-    <div>ChatPage</div>
+    <div>ChatPage
+
+    </div>
   )
 }
 
