@@ -5,7 +5,7 @@ import { Server } from "socket.io";
 const app = express();
 const server = http.createServer(app);
 
-const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:5177";
+const allowedOrigin = process.env.FRONTEND_URL;
 
 const io = new Server(server, { cors: { origin: [allowedOrigin] } });
 
